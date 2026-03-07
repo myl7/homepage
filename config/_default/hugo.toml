@@ -19,51 +19,51 @@ enableEmoji = true
 # googleAnalytics = "G-XXXXXXXXX"
 
 [pagination]
-  pagerSize = 100
+pagerSize = 100
 
 [imaging]
-  anchor = 'Center'
+anchor = 'Center'
 
 [taxonomies]
-  tag = "tags"
-  category = "categories"
-  author = "authors"
-  series = "series"
+tag = "tags"
+category = "categories"
+author = "authors"
+series = "series"
 
 [sitemap]
-  changefreq = 'daily'
-  filename = 'sitemap.xml'
-  priority = 0.5
+changefreq = 'daily'
+filename = 'sitemap.xml'
+priority = 0.5
 
 [outputs]
-  home = ["HTML", "RSS", "JSON"]
+home = ["HTML", "RSS", "JSON"]
 
 [related]
-  threshold = 0
-  toLower = false
+threshold = 0
+toLower = false
 
-    [[related.indices]]
-        name = "tags"
-        weight = 100
+[[related.indices]]
+name = "tags"
+weight = 100
 
-    [[related.indices]]
-        name = "categories"
-        weight = 100
+[[related.indices]]
+name = "categories"
+weight = 100
 
-    [[related.indices]]
-        name = "series"
-        weight = 50
+[[related.indices]]
+name = "series"
+weight = 50
 
-    [[related.indices]]
-        name = "authors"
-        weight = 20
+[[related.indices]]
+name = "authors"
+weight = 20
 
-    [[related.indices]]
-        name = "date"
-        weight = 10
+[[related.indices]]
+name = "date"
+weight = 10
 
-    [[related.indices]]
-      applyFilter = false
-      name = 'fragmentrefs'
-      type = 'fragments'
-      weight = 10
+[[related.indices]]
+applyFilter = false
+name = 'fragmentrefs'
+type = 'fragments'
+weight = 10

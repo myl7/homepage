@@ -41,142 +41,142 @@ giteaDefaultServer = "https://git.fsfe.org"
 forgejoDefaultServer = "https://v11.next.forgejo.org"
 
 [header]
-  layout = "basic" # valid options: basic, fixed, fixed-fill, fixed-gradient, fixed-fill-blur
+layout = "basic" # valid options: basic, fixed, fixed-fill, fixed-gradient, fixed-fill-blur
 
 [footer]
-  showMenu = true
-  showCopyright = true
-  showThemeAttribution = true
-  showAppearanceSwitcher = true
-  showScrollToTop = true
+showMenu = true
+showCopyright = true
+showThemeAttribution = true
+showAppearanceSwitcher = true
+showScrollToTop = true
 
 [homepage]
-  layout = "profile" # valid options: page, profile, hero, card, background, custom
-  #homepageImage = "IMAGE.jpg" # used in: hero, and card
-  showRecent = false
-  showRecentItems = 5
-  showMoreLink = false
-  showMoreLinkDest = "/posts/"
-  cardView = false
-  cardViewScreenWidth = false
-  layoutBackgroundBlur = false # only used when layout equals background
-  disableHeroImageFilter = false # only used when layout equals hero
+layout = "profile" # valid options: page, profile, hero, card, background, custom
+#homepageImage = "IMAGE.jpg" # used in: hero, and card
+showRecent = false
+showRecentItems = 5
+showMoreLink = false
+showMoreLinkDest = "/posts/"
+cardView = false
+cardViewScreenWidth = false
+layoutBackgroundBlur = false   # only used when layout equals background
+disableHeroImageFilter = false # only used when layout equals hero
 
 [article]
-  showDate = true
-  showViews = false
-  showLikes = false
-  showDateOnlyInArticle = false
-  showDateUpdated = false
-  showAuthor = true
-  # showAuthorBottom = false
-  showHero = false
-  # heroStyle = "basic" # valid options: basic, big, background, thumbAndBackground
-  layoutBackgroundBlur = true # only used when heroStyle equals background or thumbAndBackground
-  layoutBackgroundHeaderSpace = true # only used when heroStyle equals background
-  showBreadcrumbs = false
-  showDraftLabel = true
-  showEdit = false
-  # editURL = "https://github.com/username/repo/"
-  editAppendPath = true
-  seriesOpened = false
-  showHeadingAnchors = true
-  showPagination = true
-  invertPagination = false
-  showReadingTime = true
-  showTableOfContents = false
-  # showRelatedContent = false
-  # relatedContentLimit = 3
-  showTaxonomies = false # use showTaxonomies OR showCategoryOnly, not both
-  showCategoryOnly = false # use showTaxonomies OR showCategoryOnly, not both
-  showAuthorsBadges = false
-  showWordCount = true
-  # sharingLinks = [ "linkedin", "twitter", "bluesky", "mastodon", "reddit", "pinterest", "facebook", "email", "whatsapp", "telegram", "line"]
-  showZenMode = false
-  # externalLinkForceNewTab = false # disable to allow external links in the same tab (defaults to true)
+showDate = true
+showViews = false
+showLikes = false
+showDateOnlyInArticle = false
+showDateUpdated = false
+showAuthor = true
+# showAuthorBottom = false
+showHero = false
+# heroStyle = "basic" # valid options: basic, big, background, thumbAndBackground
+layoutBackgroundBlur = true        # only used when heroStyle equals background or thumbAndBackground
+layoutBackgroundHeaderSpace = true # only used when heroStyle equals background
+showBreadcrumbs = false
+showDraftLabel = true
+showEdit = false
+# editURL = "https://github.com/username/repo/"
+editAppendPath = true
+seriesOpened = false
+showHeadingAnchors = true
+showPagination = true
+invertPagination = false
+showReadingTime = true
+showTableOfContents = false
+# showRelatedContent = false
+# relatedContentLimit = 3
+showTaxonomies = false    # use showTaxonomies OR showCategoryOnly, not both
+showCategoryOnly = false  # use showTaxonomies OR showCategoryOnly, not both
+showAuthorsBadges = false
+showWordCount = true
+# sharingLinks = [ "linkedin", "twitter", "bluesky", "mastodon", "reddit", "pinterest", "facebook", "email", "whatsapp", "telegram", "line"]
+showZenMode = false
+# externalLinkForceNewTab = false # disable to allow external links in the same tab (defaults to true)
 
 [list]
-  showHero = false
-  # heroStyle = "background" # valid options: basic, big, background, thumbAndBackground
-  layoutBackgroundBlur = true # only used when heroStyle equals background or thumbAndBackground
-  layoutBackgroundHeaderSpace = true # only used when heroStyle equals background
-  showBreadcrumbs = false
-  showSummary = false
-  showViews = false
-  showLikes = false
-  showTableOfContents = false
-  showCards = false
-  orderByWeight = false
-  groupByYear = true
-  cardView = false
-  cardViewScreenWidth = false
-  constrainItemsWidth = false
+showHero = false
+# heroStyle = "background" # valid options: basic, big, background, thumbAndBackground
+layoutBackgroundBlur = true        # only used when heroStyle equals background or thumbAndBackground
+layoutBackgroundHeaderSpace = true # only used when heroStyle equals background
+showBreadcrumbs = false
+showSummary = false
+showViews = false
+showLikes = false
+showTableOfContents = false
+showCards = false
+orderByWeight = false
+groupByYear = true
+cardView = false
+cardViewScreenWidth = false
+constrainItemsWidth = false
 
 [sitemap]
-  excludedKinds = ["taxonomy", "term"]
+excludedKinds = ["taxonomy", "term"]
 
 [taxonomy]
-  showTermCount = true
-  showHero = false
-  # heroStyle = "background" # valid options: basic, big, background, thumbAndBackground
-  showBreadcrumbs = false
-  showViews = false
-  showLikes = false
-  showTableOfContents = false
-  cardView = false
+showTermCount = true
+showHero = false
+# heroStyle = "background" # valid options: basic, big, background, thumbAndBackground
+showBreadcrumbs = false
+showViews = false
+showLikes = false
+showTableOfContents = false
+cardView = false
 
 [term]
-  showHero = false
-  # heroStyle = "background" # valid options: basic, big, background, thumbAndBackground
-  showBreadcrumbs = false
-  showViews = false
-  showLikes = false
-  showTableOfContents = true
-  groupByYear = false
-  cardView = false
-  cardViewScreenWidth = false
+showHero = false
+# heroStyle = "background" # valid options: basic, big, background, thumbAndBackground
+showBreadcrumbs = false
+showViews = false
+showLikes = false
+showTableOfContents = true
+groupByYear = false
+cardView = false
+cardViewScreenWidth = false
 
 [firebase]
-  # apiKey = "XXXXXX"
-  # authDomain = "XXXXXX"
-  # projectId = "XXXXXX"
-  # storageBucket = "XXXXXX"
-  # messagingSenderId = "XXXXXX"
-  # appId = "XXXXXX"
-  # measurementId = "XXXXXX"
+# apiKey = "XXXXXX"
+# authDomain = "XXXXXX"
+# projectId = "XXXXXX"
+# storageBucket = "XXXXXX"
+# messagingSenderId = "XXXXXX"
+# appId = "XXXXXX"
+# measurementId = "XXXXXX"
 
 [fathomAnalytics]
-  # site = "ABC12345"
-  # domain = "llama.yoursite.com"
+# site = "ABC12345"
+# domain = "llama.yoursite.com"
 
 [umamiAnalytics]
-  # websiteid = "ABC12345"
-  # domain = "llama.yoursite.com"
-  # dataDomains = "yoursite.com,yoursite2.com"
-  # scriptName = ""
-  # enableTrackEvent = true
+# websiteid = "ABC12345"
+# domain = "llama.yoursite.com"
+# dataDomains = "yoursite.com,yoursite2.com"
+# scriptName = ""
+# enableTrackEvent = true
 
 [selineAnalytics]
-  # token = "XXXXXX"
-  # enableTrackEvent = true
+# token = "XXXXXX"
+# enableTrackEvent = true
 
 [buymeacoffee]
-  # identifier = ""
-  # globalWidget = true
-  # globalWidgetMessage = "Hello"
-  # globalWidgetColor = "#FFDD00"
-  # globalWidgetPosition = "right"
+# identifier = ""
+# globalWidget = true
+# globalWidgetMessage = "Hello"
+# globalWidgetColor = "#FFDD00"
+# globalWidgetPosition = "right"
 
 [verification]
-  # google = ""
-  # bing = ""
-  # pinterest = ""
-  # yandex = ""
-  # fediverse = ""
+# google = ""
+# bing = ""
+# pinterest = ""
+# yandex = ""
+# fediverse = ""
 
 [rssnext]
-  # feedId = ""
-  # userId = ""
+# feedId = ""
+# userId = ""
 
 [advertisement]
-  # adsense = ""
+# adsense = ""
