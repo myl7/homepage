@@ -1,0 +1,6 @@
+{
+  "redirects": [
+    { "source": "/brotli", "destination": "https://brotli.myl.moe", "permanent": true },
+    { "source": "/rss.xml", "destination": "https://myl7.org/index.xml", "permanent": true }
+  ]
+}
