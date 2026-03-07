@@ -8,11 +8,11 @@ title = "Yulong Ming's Homepage"
 displayName = "EN"
 isoCode = "en"
 rtl = false
-dateFormat = "2 January 2006"
+dateFormat = "2006-01-02"
 # logo = "img/logo.png"
 # secondaryLogo = "img/secondary-logo.png"
 # description = "My awesome website"
-# copyright = "Copy, _right?_ :thinking_face:"
+copyright = "Copyright (C) 2026 Yulong Ming <i@myl7.org>. [CC BY 4.0 License](https://creativecommons.org/licenses/by/4.0/), unless otherwise noted."
 
 [params.author]
 name = "Yulong Ming"
