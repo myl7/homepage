@@ -18,6 +18,9 @@ enable = true
 block = [['\[', '\]'], ['$$', '$$']]
 inline = [['\(', '\)']]
 
+[goldmark.extensions.typographer]
+disable = true
+
 [highlight]
 noClasses = false
 
