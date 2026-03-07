@@ -1,6 +1,7 @@
 ---
-title: "Hi, I am Yulong Ming (明宇龙)!"
 ---
+
+# Hi, I am Yulong Ming!
 
 - **Research and education**: PhD candidate in Computer Science at City University of Hong Kong (2022--26), interested in Network Security, Applied Cryptography, and AI Security.
   BEng in Computer Science at University of Science and Technology of China (2018--22).
