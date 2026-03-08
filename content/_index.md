@@ -10,4 +10,4 @@
   I run Arch Linux for my daily work.
 - **Social media**: I post on my channels on [Telegram](https://t.me/myl7s) and [小红书](https://www.xiaohongshu.com/user/profile/64f3012b000000000603199d).
   All my channels have almost the same content.
-  Homepage: [myl7.org](https://myl7.org). Emails: i@myl7.org (code dev), myl.7@my.cityu.edu.hk (research), and myl7.moe@gmail.com (general purpose).
+  Homepage: [myl7.org](https://myl7.org). Emails: <i@myl7.org> (also: [research](mailto:myl.7@my.cityu.edu.hk) and [general use](mailto:myl7.moe@gmail.com)).
