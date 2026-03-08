@@ -1,3 +1,4 @@
 baseURL = 'https://myl7.org/'
 languageCode = 'en'
 title = 'My New Hugo Project'
+timeZone = "Asia/Shanghai"
