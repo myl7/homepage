@@ -9,6 +9,7 @@
 # AI agents
 .claude/**/*.local.*
 /doc/plans
+.firecrawl
 
 # Generated files by hugo
 /public/
