@@ -16,7 +16,7 @@ unsafe = true
 enable = true
 [goldmark.extensions.passthrough.delimiters]
 block = [['\[', '\]'], ['$$', '$$']]
-inline = [['\(', '\)']]
+inline = [['\(', '\)'], ['$', '$']]
 
 [goldmark.extensions.typographer]
 disable = true
