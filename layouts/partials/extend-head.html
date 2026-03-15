@@ -1,3 +1,25 @@
+<style>
+    .prose pre.chroma {
+        white-space: pre-wrap !important;
+        word-wrap: break-word !important;
+        overflow-wrap: break-word !important;
+        overflow-x: hidden !important;
+    }
+    .prose pre.chroma code {
+        white-space: pre-wrap !important;
+        word-wrap: break-word !important;
+        overflow-wrap: break-word !important;
+        min-width: 0 !important;
+        max-width: 100% !important;
+        width: 100% !important;
+    }
+    .prose pre.chroma code .line {
+        display: inline !important;
+    }
+    .prose pre.chroma code .cl {
+        display: inline !important;
+    }
+</style>
 {{ if hugo.IsProduction }}
 <script>
     window.va =
