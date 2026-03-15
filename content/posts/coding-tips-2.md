@@ -5,6 +5,9 @@ draft: true
 
 ## CSS 文字与图片对齐
 
+Flex 布局用 `align-items: center` 就能让文字和 icon 居中对齐。
+这里只讨论 inline 布局的情况。
+
 `vertical-align: middle` 对齐的是 x-height 而非 cap-height，导致 icon 偏下。
 用 `cap` 单位修正：
 
@@ -17,7 +20,7 @@ icon 尺寸未知时，用负 margin 补偿 x-height 与 cap-height 的差：
 }
 ```
 
-icon 尺寸已知时，直接算 vertical-align 偏移量（在 flex 容器中也不会出问题）：
+icon 尺寸已知时，直接算 vertical-align 偏移量：
 
 ```css
 .icon {
