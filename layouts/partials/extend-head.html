@@ -14,10 +14,15 @@
         width: 100% !important;
     }
     .prose pre.chroma code .line {
-        display: inline !important;
+        display: flex !important;
+    }
+    .prose pre.chroma code .ln {
+        flex-shrink: 0 !important;
+        user-select: none !important;
     }
     .prose pre.chroma code .cl {
-        display: inline !important;
+        min-width: 0 !important;
+        flex: 1 !important;
     }
 </style>
 {{ if hugo.IsProduction }}

@@ -23,6 +23,8 @@ disable = true
 
 [highlight]
 noClasses = false
+lineNos = true
+lineNumbersInTable = false
 
 [tableOfContents]
 startLevel = 2
