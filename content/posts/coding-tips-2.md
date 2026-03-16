@@ -1,5 +1,6 @@
 ---
 title: "编程杂记 #2"
+tags: [coding-tips]
 draft: true
 ---
 

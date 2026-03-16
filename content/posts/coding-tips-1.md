@@ -1,6 +1,7 @@
 ---
 title: "编程杂记 #1"
 date: 2026-03-15
+tags: [coding-tips]
 ---
 
 ## Windows 文件夹共享
