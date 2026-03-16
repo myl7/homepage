@@ -2,7 +2,6 @@
 title: "p²RAG: Privacy-Preserving RAG Service Supporting Arbitrary Top-k Retrieval"
 tags: [paper]
 date: 2026-03-16
-draft: true
 ---
 
 {{< katex >}}
