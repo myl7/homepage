@@ -112,7 +112,7 @@ ff02::1 ip6-allnodes
 ff02::2 ip6-allrouters
 ```
 
-其中 hostname 是 FQDN，没用就直接用 hostname。
+其中 hostname 是 FQDN，没有就直接用 hostname。
 `127.0.1.1` 如果有永久 IPv4 就改成永久 IPv4。
 
 Ref: [5.1.1. 主机名解析 of Debian 参考手册](https://www.debian.org/doc/manuals/debian-reference/ch05.zh-cn.html#_the_hostname_resolution)
