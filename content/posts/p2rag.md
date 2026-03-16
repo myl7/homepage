@@ -21,7 +21,7 @@ The experiments show that $p^2$RAG is 3--300$\times$ faster than the state-of-th
 
 ## Workflow Figure
 
-![](protocol.svg "The workflow of $p^2$RAG.")
+![](protocol.webp "The workflow of $p^2$RAG.")
 
 During the offline stage, the data owner sets up the secret-shared database. During the distance calculation, the servers compute the secret-shared distances between each document and the user's prompt. During the distance bisection, the user determines a distance threshold $d_k$ for the top-$k$ documents. The bisection iteration ends when $d_k$ is found, or the number of iterations exceeds an upper bound. During the text retrieval, the user retrieves textual documents using the indices of the top-$k$ documents.
 
