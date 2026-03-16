@@ -4,7 +4,7 @@
 
 # AI agents
 .claude/**/*.local.*
-/doc/plans
+/doc/superpowers
 .firecrawl
 
 # Generated files by hugo
@@ -20,3 +20,14 @@ hugo.linux
 
 # Temporary lock file while building
 /.hugo_build.lock
+
+# Python-generated files
+__pycache__/
+*.py[oc]
+build/
+dist/
+wheels/
+*.egg-info
+
+# Virtual environments
+.venv
