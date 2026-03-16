@@ -51,3 +51,26 @@ html {
 ```
 
 Ref: [Cap-Height Vertical Align by Roma Komarov](https://blog.kizu.dev/cap-height-align/)
+
+## 常见预装字体
+
+Windows:
+
+- Sans-serif: Arial, Segoe UI, Verdana, Tahoma, Calibri
+- Serif: Times New Roman, Georgia, Cambria
+- Monospace: Consolas, Courier New, Cascadia Mono（Windows Terminal 自带）
+
+macOS:
+
+- Sans-serif: Helvetica, San Francisco（系统 UI）, Arial
+- Serif: Times New Roman, Georgia
+- Monospace: Menlo, Monaco, SF Mono, Courier New
+
+Linux（取决于发行版和字体包）:
+
+- Sans-serif: Noto Sans, DejaVu Sans
+- Serif: Noto Serif, DejaVu Serif
+- Monospace: DejaVu Sans Mono, Noto Sans Mono
+- Liberation 系列（Liberation Sans/Serif/Mono）是 Arial/Times New Roman/Courier New 的度量兼容替代品，很多发行版预装
+
+Windows 和 macOS 之间交集比较大（Arial、Times New Roman、Georgia、Courier New），Linux 和它们的交集很小，主要靠 Liberation 和 DejaVu 系列覆盖。
