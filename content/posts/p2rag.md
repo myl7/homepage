@@ -27,4 +27,4 @@ During the offline stage, the data owner sets up the secret-shared database. Dur
 
 ## Full Paper
 
-The preprint [PDF](/papers/p2rag_arxiv.pdf) and [LaTeX sources](/papers/p2rag_arxiv.zip) is available here and on arXiv (coming soon).
+The preprint [PDF](/papers/p2rag_arxiv.pdf) and [LaTeX sources](/papers/p2rag_arxiv.zip) is available here and on [arXiv](https://arxiv.org/abs/2603.14778).
