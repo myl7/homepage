@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/env -S uv run python
 
 """
 Split a long screenshot into 3:4 pages.
@@ -7,14 +7,16 @@ Finds clean split points (avoiding text/lines) and adds padding at split
 edges so every page has consistent margins.
 
 Usage:
-    uv run python scripts/split_post.py <input>
-    uv run python scripts/split_post.py <input> --padding 60 --output-dir out/
+    uv run python scripts/split_post.py < input.png
+    uv run python scripts/split_post.py --name coding-tips --output-dir screenshots < input.png
+    cat input.png | uv run python scripts/split_post.py --padding 60
 
 Dependencies:
     uv add --dev pillow numpy
 """
 
 import argparse
+import sys
 from pathlib import Path
 
 import numpy as np
@@ -68,8 +70,7 @@ def detect_bg_color(img_array):
     return np.median(np.concatenate(samples, axis=0), axis=0).astype(np.uint8)
 
 
-def split_image(input_path, output_dir, padding, search_ratio, ratio):
-    img = Image.open(input_path)
+def split_image(img, name, output_dir, padding, search_ratio, ratio):
     w, h = img.size
     img_array = np.array(img)
 
@@ -81,9 +82,9 @@ def split_image(input_path, output_dir, padding, search_ratio, ratio):
     # Content height per page (minus padding on split edges)
     content_step = page_height - 2 * padding
 
-    print(f"Image size: {w} x {h} px")
-    print(f"Page size: {w} x {page_height} px ({rw}:{rh})")
-    print(f"Background color: {tuple(bg_color)}")
+    print(f"Image size: {w} x {h} px", file=sys.stderr)
+    print(f"Page size: {w} x {page_height} px ({rw}:{rh})", file=sys.stderr)
+    print(f"Background color: {tuple(bg_color)}", file=sys.stderr)
 
     # Find split points
     splits = [0]
@@ -100,11 +101,10 @@ def split_image(input_path, output_dir, padding, search_ratio, ratio):
 
     splits.append(h)
 
-    print(f"Split points: {splits}")
-    print(f"Pages: {len(splits) - 1}")
+    print(f"Split points: {splits}", file=sys.stderr)
+    print(f"Pages: {len(splits) - 1}", file=sys.stderr)
 
     # Generate pages
-    stem = Path(input_path).stem
     output_dir = Path(output_dir)
     output_dir.mkdir(parents=True, exist_ok=True)
 
@@ -130,19 +130,21 @@ def split_image(input_path, output_dir, padding, search_ratio, ratio):
         page = Image.new(img.mode, (w, new_h), tuple(bg_color))
         page.paste(content, (0, pad_top))
 
-        out_path = output_dir / f"{stem}_{i + 1:02d}.png"
+        out_path = output_dir / f"{name}_{i + 1:02d}.png"
         page.save(out_path)
         pages.append(out_path)
-        print(f"  Page {i + 1}: {w} x {new_h} px -> {out_path}")
+        print(f"  Page {i + 1}: {w} x {new_h} px -> {out_path}", file=sys.stderr)
 
 
 def main():
     parser = argparse.ArgumentParser(description="Split a long screenshot into 3:4 pages")
-    parser.add_argument("input", help="Input image file")
+    parser.add_argument("--name", default="page", help="Output file name stem (default: page)")
     parser.add_argument(
         "--padding", type=int, default=80, help="Padding at split edges in px (default: 80)"
     )
-    parser.add_argument("--output-dir", default=".", help="Output directory (default: .)")
+    parser.add_argument(
+        "--output-dir", default="screenshots", help="Output directory (default: screenshots)"
+    )
     parser.add_argument(
         "--ratio",
         default="3:4",
@@ -156,8 +158,10 @@ def main():
     )
     args = parser.parse_args()
 
+    img = Image.open(sys.stdin.buffer)
+
     rw, rh = (int(x) for x in args.ratio.split(":"))
-    split_image(args.input, args.output_dir, args.padding, args.search, (rw, rh))
+    split_image(img, args.name, args.output_dir, args.padding, args.search, (rw, rh))
 
 
 if __name__ == "__main__":

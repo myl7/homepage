@@ -1,52 +1,40 @@
-#!/usr/bin/env python3
+#!/usr/bin/env -S uv run python
 
 """
 Crop header and footer from a post screenshot.
 
 Usage:
-    uv run python scripts/crop_post.py <input> [output]
-
-Examples:
-    uv run python scripts/crop_post.py coding-tips-1.png
-    uv run python scripts/crop_post.py coding-tips-1.png cropped.png
-    uv run python scripts/crop_post.py coding-tips-1.png --top 200 --bottom 150
+    uv run python scripts/crop_post.py < input.png > output.png
+    uv run python scripts/crop_post.py --top 200 --bottom 150 < input.png > output.png
+    cat input.png | uv run python scripts/crop_post.py > output.png
 
 Dependencies:
     uv add --dev pillow
 """
 
 import argparse
+import sys
 
 from PIL import Image
 
 
-def crop_image(
-    input_path: str,
-    output_path: str,
-    top: int = 0,
-    bottom: int = 0,
-):
-    img = Image.open(input_path)
+def crop_image(img: Image.Image, top: int = 0, bottom: int = 0) -> Image.Image:
     w, h = img.size
-    print(f"Original size: {w} x {h} px")
+    print(f"Original size: {w} x {h} px", file=sys.stderr)
 
     if top + bottom >= h:
         raise ValueError(f"Crop total ({top + bottom}px) >= image height ({h}px)")
 
     cropped = img.crop((0, top, w, h - bottom))
-    cropped.save(output_path)
 
     cw, ch = cropped.size
-    print(f"Cropped size: {cw} x {ch} px")
-    print(f"Saved: {output_path}")
+    print(f"Cropped size: {cw} x {ch} px", file=sys.stderr)
+
+    return cropped
 
 
 def main():
     parser = argparse.ArgumentParser(description="Crop header and footer from a post screenshot")
-    parser.add_argument("input", help="Input image file")
-    parser.add_argument(
-        "output", nargs="?", default=None, help="Output file (default: overwrites input)"
-    )
     parser.add_argument(
         "--top", type=int, default=140, help="Pixels to crop from top (default: 140)"
     )
@@ -55,14 +43,9 @@ def main():
     )
     args = parser.parse_args()
 
-    output = args.output if args.output else args.input
-
-    crop_image(
-        input_path=args.input,
-        output_path=output,
-        top=args.top,
-        bottom=args.bottom,
-    )
+    img = Image.open(sys.stdin.buffer)
+    cropped = crop_image(img, top=args.top, bottom=args.bottom)
+    cropped.save(sys.stdout.buffer, format="PNG")
 
 
 if __name__ == "__main__":

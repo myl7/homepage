@@ -1,16 +1,13 @@
-#!/usr/bin/env python3
+#!/usr/bin/env -S uv run python
 
 """
 Capture a post as a full-page long screenshot.
 
 Usage:
-    uv run python scripts/capture_post.py <slug> [output]
-
-Examples:
-    uv run python scripts/capture_post.py coding-tips-1
-    uv run python scripts/capture_post.py coding-tips-1 output.png
+    uv run python scripts/capture_post.py <slug> > screenshot.png
+    uv run python scripts/capture_post.py <slug> -o output.png
+    uv run python scripts/capture_post.py coding-tips-1 | python scripts/crop_post.py > cropped.png
     uv run python scripts/capture_post.py coding-tips-1 --local
-    uv run python scripts/capture_post.py coding-tips-1 --base-url http://localhost:1313
 
 Dependencies:
     uv add --dev playwright
@@ -19,6 +16,8 @@ Dependencies:
 
 import argparse
 import asyncio
+import sys
+from pathlib import Path
 
 from playwright.async_api import async_playwright
 
@@ -47,7 +46,7 @@ async def auto_scroll(page, scroll_step: int = 500, delay: float = 0.3):
 
 async def take_full_screenshot(
     url: str,
-    output_path: str,
+    output_path: str | None = None,
     viewport_width: int = 1200,
     wait_after_load: float = 2.0,
     scroll_to_bottom: bool = True,
@@ -60,29 +59,34 @@ async def take_full_screenshot(
             device_scale_factor=device_scale_factor,
         )
 
-        print(f"Loading: {url}")
+        print(f"Loading: {url}", file=sys.stderr)
         await page.goto(url, wait_until="networkidle")
 
         # Force the inline TOC open
         await page.evaluate("document.querySelector('.toc-inside')?.setAttribute('open', '')")
 
         if scroll_to_bottom:
-            print("Scrolling to trigger lazy-loaded content...")
+            print("Scrolling to trigger lazy-loaded content...", file=sys.stderr)
             await auto_scroll(page)
 
         if wait_after_load > 0:
-            print(f"Waiting {wait_after_load}s for rendering...")
+            print(f"Waiting {wait_after_load}s for rendering...", file=sys.stderr)
             await asyncio.sleep(wait_after_load)
 
         total_height = await page.evaluate("document.body.scrollHeight")
-        print(f"Page height: {total_height}px")
+        print(f"Page height: {total_height}px", file=sys.stderr)
 
-        await page.screenshot(path=output_path, full_page=True)
+        if output_path:
+            await page.screenshot(path=output_path, full_page=True)
+            print(f"Screenshot saved: {output_path}", file=sys.stderr)
+        else:
+            data = await page.screenshot(full_page=True)
+            sys.stdout.buffer.write(data)
 
-        print(f"Screenshot saved: {output_path}")
         print(
             f"Image size: {viewport_width * device_scale_factor}"
-            f" x {total_height * device_scale_factor} px"
+            f" x {total_height * device_scale_factor} px",
+            file=sys.stderr,
         )
 
         await browser.close()
@@ -91,7 +95,7 @@ async def take_full_screenshot(
 def main():
     parser = argparse.ArgumentParser(description="Capture a post as a full-page screenshot")
     parser.add_argument("slug", help="Post slug (e.g. coding-tips-1)")
-    parser.add_argument("output", nargs="?", default=None, help="Output file (default: <slug>.png)")
+    parser.add_argument("-o", "--output", default=None, help="Output file (default: stdout)")
     parser.add_argument(
         "--base-url", default="https://myl7.org", help="Base URL (default: https://myl7.org)"
     )
@@ -114,7 +118,9 @@ def main():
         base_url = args.base_url
 
     url = f"{base_url}/posts/{args.slug}/"
-    output = args.output if args.output else f"{args.slug}.png"
+    output = args.output
+    if output:
+        Path(output).parent.mkdir(parents=True, exist_ok=True)
 
     asyncio.run(
         take_full_screenshot(
