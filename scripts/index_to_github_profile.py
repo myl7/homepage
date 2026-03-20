@@ -25,4 +25,10 @@ _front_matter = fm_match.group(1)
 
 body = text[fm_match.end() :]
 
-dst.write_text(body)
+stats_cards = """
+![GitHub Stats](https://github-readme-stats.vercel.app/api?username=myl7&show_icons=true&theme=radical)
+![Top Languages](https://github-readme-stats.vercel.app/api/top-langs/?username=myl7&layout=compact&theme=radical)
+![Streak Stats](https://github-readme-streak-stats.herokuapp.com/?user=myl7&theme=radical)
+"""
+
+dst.write_text(body + stats_cards)
