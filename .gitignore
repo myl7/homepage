@@ -31,3 +31,7 @@ wheels/
 
 # Virtual environments
 .venv
+
+# Screenshots
+/screenshots
+

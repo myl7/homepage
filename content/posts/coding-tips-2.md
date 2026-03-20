@@ -1,7 +1,7 @@
 ---
 title: "编程杂记 #2"
+date: 2026-03-20
 tags: [coding-tips]
-draft: true
 ---
 
 ## CSS文字与图片对齐
@@ -81,7 +81,7 @@ Linux（取决于发行版和字体包）:
 - Sans-serif: Noto Sans, DejaVu Sans
 - Serif: Noto Serif, DejaVu Serif
 - Monospace: DejaVu Sans Mono, Noto Sans Mono
-- Liberation系列（Liberation Sans/Serif/Mono）是Arial/Times New Roman/Courier New的度量兼容替代品，很多发行版预装
+- Liberation系列（Liberation Sans/Serif/Mono）是Arial/Times New Roman/Courier New的度量兼容替代品，很多发行版预装。
 
 Windows和macOS之间交集比较大（Arial、Times New Roman、Georgia、Courier New），Linux和它们的交集很小，主要靠Liberation和DejaVu系列覆盖。
 
@@ -138,3 +138,36 @@ Bash在这种上下文中压制errexit，即使子shell内部显式执行了`set
 ) || echo b
 # 输出: b
 ```
+
+## .au域名
+
+.au域名要求注册者必须是澳大利亚公民/永久居民、持有ABN/ACN的澳大利亚实体、或持有与域名完全匹配的澳大利亚注册商标的外国实体，且资格须在整个持有期间持续有效，否则域名会被直接删除且不退款。
+
+## Bun优点和兼容性问题
+
+### 优点
+
+- **单一二进制**：runtime + bundler + test runner + package manager，零配置冲突。
+- **快**：Zig + JSC引擎，`bun install` / `bun test`冷启动体感显著快于Node生态同类工具，CI受益最大。
+- **原生TS/JSX**：不依赖esbuild转译层，直接跑`.ts`/`.tsx`。
+- **内置实用API**：`Bun.serve()`、`bun:sqlite`、`Bun.password`、`Bun.S3`，简单后端无需额外框架。
+- **Serverless友好**：~20ms启动，Lambda冷启动成本直降。
+
+### 兼容性问题
+
+**Native Addon**：任何带`binding.gyp`的包都可能挂。
+`bcrypt`直接报`MODULE_NOT_FOUND`（换`bcryptjs`）；`canvas`不可用且无workaround；`sharp` 2026年靠WASM fallback基本能跑但需验证平台；`better-sqlite3`不可用（用`bun:sqlite`替代）。
+`Bun.password`验证Node bcrypt生成的`$2a$`哈希会返回false，需手动替换前缀为`$2b$`。
+
+**调试**：`bun --inspect`断点不可靠，`await`单步会迷失，sourcemap映射常错位，结束后端口不释放。
+Windows上VS Code调试直接不可用（`ws+unix://`路径解析失败）。
+
+**Test Runner**：未集成VS Code Test Explorer；monorepo下同class的`instanceof`断言可能误判（双重模块解析）。
+
+**Next.js**：当package manager安全；当runtime需逐一验证依赖。
+Bun workspaces下TS项目启动失败（hoisting差异导致`@types/node`丢失）；有部署时SIGILL crash的报告。
+Vercel 2025.10起支持Bun runtime（public beta）。
+
+**Workspace**：npm的`"pkg": "*"`写法不被识别为workspace引用，必须写`workspace:*`，现有npm monorepo直接切可能坏。
+
+**bun build**：不完全尊重`tsconfig.json`，默认把node_modules全打包，`external` / `packages`语义易混淆。
