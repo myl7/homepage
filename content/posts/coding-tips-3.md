@@ -23,13 +23,13 @@ $$\text{Round}_i(L, R) = (R,\; L \oplus F_i(R))$$
 - 在$\{0,1\}^{\lceil \log_2(\text{domain}) \rceil}$上做cycle-walking，平均最多需要2次迭代。
 - 总开销：每次PRP evaluation约3-4次AES调用。
 
-<!-- ## FreeRDP v3连接登录微软邮箱的Windows-->
-
-## Windows远程桌面NLA
+## FreeRDP v3连接到登录了微软账户的Windows
 
 在Windows中把NLA（Network Level Authentication）关了，这个主要是防DoS（拒绝服务攻击）的。
+使用设置中“系统->高级->设备门户->提供用户名和密码”设置的用户名和密码，与微软账户、微软app password或Windows Hello pin无关。
+域设为MicrosoftAccount。
 
-<!-- 命令带上`-authentication`选项，使用本地用户名（cmd里`whoami`）和微软账户密码、如果开了微软的MLA（多因素认证），要创建并使用app password。-->
+PS：Teamviewer的Windows密码认证也是用的这个用户名和密码。且FreeRDP会“挤出”Teamviewer。
 
 ## Windows改UI字体
 
