@@ -51,6 +51,7 @@ async def take_full_screenshot(
     wait_after_load: float = 2.0,
     scroll_to_bottom: bool = True,
     device_scale_factor: int = 2,
+    font_scale: float = 1.0,
 ):
     async with async_playwright() as p:
         browser = await p.chromium.launch()
@@ -61,6 +62,9 @@ async def take_full_screenshot(
 
         print(f"Loading: {url}", file=sys.stderr)
         await page.goto(url, wait_until="networkidle")
+
+        if font_scale != 1.0:
+            await page.evaluate(f"document.documentElement.style.fontSize = '{font_scale}em'")
 
         # Force the inline TOC open
         await page.evaluate("document.querySelector('.toc-inside')?.setAttribute('open', '')")
@@ -107,6 +111,9 @@ def main():
     parser.add_argument("--width", type=int, default=440, help="Viewport width (default: 440)")
     parser.add_argument("--scale", type=int, default=3, help="Device scale factor (default: 3)")
     parser.add_argument(
+        "--font-scale", type=float, default=1.2, help="Font scale factor (default: 1.2)"
+    )
+    parser.add_argument(
         "--wait", type=float, default=2.0, help="Wait seconds after load (default: 2.0)"
     )
     parser.add_argument("--no-scroll", action="store_true", help="Skip scrolling")
@@ -130,6 +137,7 @@ def main():
             wait_after_load=args.wait,
             scroll_to_bottom=not args.no_scroll,
             device_scale_factor=args.scale,
+            font_scale=args.font_scale,
         )
     )
 
