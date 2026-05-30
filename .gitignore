@@ -2,9 +2,8 @@
 .vscode
 .idea
 
-# AI agents
-.claude/**/*.local.*
-/doc/superpowers
+# Agents
+.claude
 .firecrawl
 
 # Generated files by hugo
