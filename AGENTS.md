@@ -31,7 +31,6 @@
 - `assets/` contains Hugo pipeline assets owned by this site.
 - `assets/js/katex-render.js` supports KaTeX rendering after the KaTeX script loads.
 - `scripts/` contains local automation and is managed with `uv`.
-- `scripts/capture_post.py`, `scripts/crop_post.py`, and `scripts/split_post.py` form the screenshot pipeline for shareable post images.
 - `scripts/index_to_github_profile.py` copies the rendered homepage Markdown body into the sibling GitHub profile repo.
 - `public/` and `resources/` are generated build artifacts.
 - `vercel.json` contains deploy-time redirects.
@@ -41,7 +40,6 @@
 - Start local Hugo server: `hugo server`.
 - Build the static site: `hugo`.
 - Install Python dev deps: `uv sync --dev`.
-- Install Playwright Chromium for screenshot capture: `uv run playwright install chromium`.
 - Run formatting: `make format`.
 - Check formatting: `make format_check`.
 
@@ -52,4 +50,3 @@
 - Prefer local overrides in root `layouts/`, `assets/`, or `static/` over theme edits.
 - Keep Hugo content changes under `content/`.
 - Keep deploy routing changes in `vercel.json`.
-- Keep screenshot automation changes in `scripts/` and update `README.md` when script usage changes.
