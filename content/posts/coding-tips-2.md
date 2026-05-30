@@ -16,8 +16,8 @@ icon尺寸未知时，用负margin补偿x-height与cap-height的差：
 
 ```css
 .icon {
-    vertical-align: middle;
-    margin-block-start: calc(1ex - 1cap);
+  vertical-align: middle;
+  margin-block-start: calc(1ex - 1cap);
 }
 ```
 
@@ -25,8 +25,8 @@ icon尺寸已知时，直接算vertical-align偏移量：
 
 ```css
 .icon {
-    --size: min(2em, 10vw);
-    vertical-align: calc(0.5cap - 0.5 * var(--size));
+  --size: min(2em, 10vw);
+  vertical-align: calc(0.5cap - 0.5 * var(--size));
 }
 ```
 
@@ -34,19 +34,19 @@ icon尺寸已知时，直接算vertical-align偏移量：
 
 ```css
 html {
-    /* Adjusted for Iowan Old Style */
-    --cap: 0.704583em;
+  /* Adjusted for Iowan Old Style */
+  --cap: 0.704583em;
 }
 
 @supports (height: 1cap) {
-    html {
-        --cap: 1cap;
-    }
+  html {
+    --cap: 1cap;
+  }
 }
 
 .icon {
-    vertical-align: middle;
-    margin-block-start: calc(1ex - var(--cap));
+  vertical-align: middle;
+  margin-block-start: calc(1ex - var(--cap));
 }
 ```
 
