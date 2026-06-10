@@ -1,0 +1,12 @@
+---
+import type { HTMLAttributes } from "astro/types";
+import LinkButton from "./LinkButton.astro";
+
+type Props = HTMLAttributes<"a">;
+
+const { class: className, ...attrs } = Astro.props;
+---
+
+<LinkButton class:list={["underline decoration-dashed underline-offset-4", className]} {...attrs}>
+  <slot />
+</LinkButton>

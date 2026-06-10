@@ -1,0 +1,40 @@
+---
+import type { HTMLAttributes } from "astro/types";
+import Socials from "./Socials.astro";
+import LinkButton from "./LinkButton.astro";
+
+type Props = {
+  noMarginTop?: boolean;
+} & HTMLAttributes<"footer">;
+
+const { noMarginTop = false, class: className, ...attrs } = Astro.props;
+---
+
+<footer class:list={["app-layout", { "mt-auto": !noMarginTop }, className]} {...attrs}>
+  <div class="border-border flex flex-col items-center justify-between gap-3 border-t py-6 sm:flex-row-reverse sm:py-4">
+    <Socials />
+    <div class="text-muted-foreground flex flex-col items-center text-center text-sm sm:items-start sm:text-start">
+      <p>
+        Copyright (C) 2026 Yulong Ming. Posts are licensed under
+        <LinkButton
+          class="underline decoration-dashed underline-offset-4"
+          href="https://creativecommons.org/licenses/by-nc-sa/4.0/"
+        >
+          CC BY-NC-SA 4.0 License</LinkButton
+        >, unless otherwise noted. Source code:
+        <LinkButton class="underline decoration-dashed underline-offset-4" href="https://github.com/myl7/website">
+          myl7/website</LinkButton
+        >. Powered by
+        <LinkButton class="underline decoration-dashed underline-offset-4" href="https://astro.build/">Astro</LinkButton
+        >
+        and
+        <LinkButton
+          class="underline decoration-dashed underline-offset-4"
+          href="https://github.com/satnaing/astro-paper"
+        >
+          AstroPaper</LinkButton
+        >.
+      </p>
+    </div>
+  </div>
+</footer>
