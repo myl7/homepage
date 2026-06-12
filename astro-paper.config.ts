@@ -3,8 +3,8 @@ import { defineAstroPaperConfig } from "./src/types/config";
 export default defineAstroPaperConfig({
   site: {
     url: "https://myl7.org",
-    title: "Yulong Ming's Website",
-    description: "Personal website, blog, and tool collection",
+    title: "Yulong Ming's Homepage",
+    description: "My profile, blog, and tools I built.",
     author: "Yulong Ming",
     ogImage: "default-og.jpg",
     lang: "en",

@@ -1,6 +1,6 @@
-# Yulong Ming's Website
+# Yulong Ming's Homepage
 
-My personal website, blog, and tool collection
+My profile, blog, and tools I built.
 
 ## License
 
