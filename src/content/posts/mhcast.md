@@ -42,4 +42,4 @@ The recipient 1 recovers a zero message.
 
 ## Full Paper
 
-Available on [this website](/papers/mhcast_tifs.pdf).
+The accepted version is available on [this website](/papers/mhcast_tifs.pdf).

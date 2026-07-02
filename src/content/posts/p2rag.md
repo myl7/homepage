@@ -37,4 +37,4 @@ During the text retrieval, the user retrieves textual documents using the indice
 
 ## Full Paper
 
-The preprint PDF is available on [arXiv 2603.14778](https://arxiv.org/abs/2603.14778).
+The preprint version is available on [arXiv 2603.14778](https://arxiv.org/abs/2603.14778).
