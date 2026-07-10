@@ -61,6 +61,18 @@ export default defineConfig({
       styles: ["normal", "italic"],
       formats: ["woff", "ttf"],
     },
+    {
+      // CJK fallback used only for dynamic OG image generation (satori), not the site UI.
+      // Requesting the "woff" format makes Google serve a single non-subsetted file that
+      // satori can parse (it cannot read woff2), unlike the many unicode-range woff2 slices.
+      name: "Noto Sans SC",
+      cssVariable: "--font-noto-sans-sc",
+      provider: fontProviders.google(),
+      fallbacks: ["sans-serif"],
+      weights: [400, 700],
+      styles: ["normal"],
+      formats: ["woff"],
+    },
   ],
   env: {
     schema: {
