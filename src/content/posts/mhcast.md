@@ -9,7 +9,7 @@ description: >-
   Experiments show that MHcast’s throughput is 2–10× higher than repeatedly using the unicast protocol when the group size is only 16.
   MHcast supports groups of any size, from 0 to N, where N is the total number of clients.
 pubDatetime: 2026-07-03
-modDatetime: 2026-07-03
+modDatetime: 2026-07-11
 tags: ["research"]
 ---
 
@@ -43,3 +43,4 @@ The recipient 1 recovers a zero message.
 ## Full Paper
 
 The accepted version is available on [this website](/papers/mhcast_tifs.pdf).
+The published version is available on [IEEE Xplore 10.1109/TIFS.2026.3711782](https://doi.org/10.1109/TIFS.2026.3711782).
