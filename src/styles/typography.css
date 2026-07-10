@@ -18,13 +18,21 @@
     }
 
     p,
-    strong,
     ol,
     ul,
     figcaption,
     table,
     code {
       @apply text-foreground;
+    }
+
+    strong {
+      @apply text-emphasis font-bold;
+    }
+
+    /* Keep bold matching its context, not the emphasis color, when nested */
+    :is(h1, h2, h3, h4, a, blockquote, thead th) strong {
+      @apply text-inherit;
     }
 
     a {

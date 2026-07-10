@@ -7,6 +7,7 @@
   --color-muted: var(--muted);
   --color-muted-foreground: var(--muted-foreground);
   --color-border: var(--border);
+  --color-emphasis: var(--emphasis);
   --font-app: var(--font-google-sans-code);
 }
 
@@ -20,6 +21,7 @@
   --muted: #e6e6e6;
   --muted-foreground: #6b7280;
   --border: #ece9e9;
+  --emphasis: #c62828;
 }
 
 /* Dark theme values */
@@ -31,4 +33,5 @@
   --muted: #343f60;
   --muted-foreground: #afb9ca;
   --border: #ab4b08;
+  --emphasis: #ff8a80;
 }
