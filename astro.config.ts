@@ -33,6 +33,8 @@ export default defineConfig({
   },
   markdown: {
     processor: unified({
+      gfm: true,
+      smartypants: false, // Keep straight quotes/dashes instead of typographic ones
       remarkPlugins: [remarkMath, remarkToc, [remarkCollapse, { test: "Table of contents" }]],
       rehypePlugins: [rehypeKatex, rehypeCallouts],
     }),

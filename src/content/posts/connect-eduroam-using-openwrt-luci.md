@@ -33,6 +33,6 @@ Encryption 选 WPA2-EAP，**不要选 WPA3-EAP**，来自 Claude 的解释：
 
 EAP-Method 选 PEAP。Authentication 选 EAP-MSCHAPv2，**不是 MSCHAPv2**。选错成 MSCHAPv2 LuCI 会标红提示的。
 
-Identity 和 Password 填用户名和密码。注意 eduroam 的用户名会带 `@` + 机构的域名，对学生而言域名~~**似乎总是和学生邮箱的域名不同**（我没见过任何反例，欢迎指出），原因可以简单猜测为学生不等于 faculty~~据朋友 slanterns 提醒，在 HKU 和 HKUST 是一样的，堪称大方了。
+Identity 和 Password 填用户名和密码。注意 eduroam 的用户名会带 `@` + 机构的域名，对学生而言域名<del>**似乎总是和学生邮箱的域名不同**（我没见过任何反例，欢迎指出），原因可以简单猜测为学生不等于 faculty</del>据朋友 slanterns 提醒，在 HKU 和 HKUST 是一样的，堪称大方了。
 
 点 Save 就完成了，回到 Network - Wireless 界面，点 Save & Apply 应用。可以看新加的对应设备左侧信号强度是否有值来判断是否连接成功。
