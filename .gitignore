@@ -34,6 +34,9 @@ pnpm-debug.log*
 # pagefind
 public/pagefind
 
+# xiaohongshu long-post exports (scripts/md-to-xhs.mjs)
+xhs-out/
+
 # pnpm
 .pnpm-store
 
