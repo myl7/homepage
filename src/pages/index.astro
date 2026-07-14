@@ -8,6 +8,7 @@ import Header from "@/components/Header.astro";
 import Footer from "@/components/Footer.astro";
 // import Socials from "@/components/Socials.astro";
 import Card from "@/components/Card.astro";
+import TaggedPosts from "@/components/TaggedPosts.astro";
 import LinkButton from "@/components/LinkButton.astro";
 import IndexBio from "@/components/IndexBio.mdx";
 import { getSortedPosts } from "@/utils/getSortedPosts";
@@ -20,10 +21,17 @@ const { posts: postsConfig } = config;
 const locale = Astro.currentLocale ?? config.site.lang;
 const t = useTranslations(locale);
 
+// Tags shown in their own dedicated sections, so excluded from Recent Posts.
+const RESEARCH_TAG = "research";
+const PROJECT_TAG = "project";
+const specialTags = [RESEARCH_TAG, PROJECT_TAG];
+
 const posts = await getCollection("posts");
 const sortedPosts = getSortedPosts(posts);
 const featuredPosts = sortedPosts.filter(({ data }) => data.featured);
-const recentPosts = sortedPosts.filter(({ data }) => !data.featured);
+const recentPosts = sortedPosts.filter(
+  ({ data }) => !data.featured && !data.tags.some((tag) => specialTags.includes(tag)),
+);
 const homePath = getRelativeLocaleUrl(locale, "");
 ---
 
@@ -58,6 +66,8 @@ const homePath = getRelativeLocaleUrl(locale, "");
       }
     </section>
 
+    <TaggedPosts id="research" title={t.home.research} tag={RESEARCH_TAG} posts={sortedPosts} divider />
+
     {
       featuredPosts.length > 0 && (
         <section id="featured" class:list={["pt-12 pb-6", { "border-border border-b": recentPosts.length > 0 }]}>
@@ -84,12 +94,14 @@ const homePath = getRelativeLocaleUrl(locale, "");
       )
     }
 
-    <div class="my-8 text-center">
+    <TaggedPosts id="projects" title={t.home.projects} tag={PROJECT_TAG} posts={sortedPosts} divider />
+
+    <section id="all-posts" class="my-8 text-center">
       <LinkButton href={getRelativeLocaleUrl(locale, "posts")}>
         {t.home.allPosts}
         <IconArrowRight class="inline-block rtl:-rotate-180" />
       </LinkButton>
-    </div>
+    </section>
   </main>
   <Footer />
 </Layout>

@@ -1,0 +1,30 @@
+---
+import type { CollectionEntry } from "astro:content";
+import Card from "./Card.astro";
+
+type Props = {
+  id: string;
+  title: string;
+  tag: string;
+  posts: CollectionEntry<"posts">[];
+  /** Render a bottom border to divide this section from the next one. */
+  divider?: boolean;
+};
+
+const { id, title, tag, posts, divider = false } = Astro.props;
+
+const tagged = posts.filter(({ data }) => data.tags.includes(tag));
+---
+
+{
+  tagged.length > 0 && (
+    <section id={id} class:list={["pt-12 pb-6", { "border-border border-b": divider }]}>
+      <h2 class="text-2xl font-semibold tracking-wide">{title}</h2>
+      <ul>
+        {tagged.map((data) => (
+          <Card variant="h3" {...data} />
+        ))}
+      </ul>
+    </section>
+  )
+}
