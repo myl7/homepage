@@ -23,8 +23,10 @@
 //   - Strikethrough (~~x~~ / <del> / <s> / <strike>) is unsupported: the text is
 //     kept, wrapped as `MARKER(x)` for you to handle by hand. Tables (also
 //     unsupported) are removed and replaced by an empty `MARKER()` paragraph.
-//   - Converts both bold (**x**) and italic (*x*) to <mark>x</mark> highlight,
-//     the one inline style import keeps; and <sub>/<sup> to unicode (H₂O, x²).
+//   - Converts bold (**x**) to <mark>x</mark> highlight, the one inline style
+//     import keeps; italic (*x*) is left as-is since Xiaohongshu has no italic
+//     and reusing <mark> for it would make everything look bold. Also converts
+//     <sub>/<sup> to unicode (H₂O, x²).
 //   - Wraps every link in `MARKER(...)`, leaving the link itself untouched
 //     (Xiaohongshu rejects links; the MARKER just makes them easy to purge).
 //   - Marks task-list items with a visible symbol (⬜/✅) since import drops the
@@ -35,8 +37,6 @@
 //   - Inlines local images as base64 data URLs, transcoded to PNG by default
 //     because import renders base64 PNG but not webp (Markdown upload carries no
 //     images). External/site-absolute URLs are left untouched.
-
-// TODO: 斜体
 
 import { readFile, writeFile, mkdir } from "node:fs/promises";
 import { existsSync, statSync } from "node:fs";
@@ -64,8 +64,8 @@ const TASK_DONE = "✅";
 // and links (Xiaohongshu is extremely hostile to links, so we only flag them).
 const MARKER = "MARKER";
 
-// Bold and italic styling is dropped on import; <mark> highlight is the one
-// inline style that survives, so both are converted to it.
+// Bold styling is dropped on import; <mark> highlight is the one inline style
+// that survives, so bold is converted to it (italic is left as-is).
 const HIGHLIGHT_OPEN = "<mark>";
 const HIGHLIGHT_CLOSE = "</mark>";
 
@@ -217,9 +217,10 @@ function transformTree(tree, stats) {
       stats.markers++;
       return index; // re-visit the kept children (images, emphasis, etc.)
     }
-    if ((node.type === "emphasis" || node.type === "strong") && parent && typeof index === "number") {
-      // Bold/italic styling is dropped on import, but <mark> highlight survives:
-      // convert both so the emphasis stays visible.
+    if (node.type === "strong" && parent && typeof index === "number") {
+      // Bold styling is dropped on import, but <mark> highlight survives, so
+      // convert bold to it. Italic (emphasis) is left as-is: Xiaohongshu has no
+      // italic, and mapping it to <mark> too would make everything look bold.
       parent.children.splice(
         index,
         1,
@@ -470,7 +471,7 @@ async function main() {
   log(`  inline math left as-is ($...$): ${stats.inlineMath}`);
   log(`  strikethrough kept as MARKER(...): ${stats.markers}`);
   log(`  tables removed (MARKER()): ${stats.tables}`);
-  log(`  bold/italic -> <mark> highlight: ${stats.highlights}`);
+  log(`  bold -> <mark> highlight: ${stats.highlights}`);
   log(`  sub/sup -> unicode: ${stats.subsup}`);
   log(`  links wrapped as MARKER(...): ${stats.links}`);
   log(`  task-list items marked (${TASK_TODO}/${TASK_DONE}): ${stats.tasks}`);
