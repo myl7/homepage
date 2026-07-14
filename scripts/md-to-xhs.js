@@ -36,6 +36,8 @@
 //     because import renders base64 PNG but not webp (Markdown upload carries no
 //     images). External/site-absolute URLs are left untouched.
 
+// TODO: 斜体
+
 import { readFile, writeFile, mkdir } from "node:fs/promises";
 import { existsSync, statSync } from "node:fs";
 import path from "node:path";
