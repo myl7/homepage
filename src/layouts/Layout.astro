@@ -2,6 +2,8 @@
 import { Font } from "astro:assets";
 import { ClientRouter } from "astro:transitions";
 import { getRelativeLocaleUrl } from "astro:i18n";
+import Analytics from "@vercel/analytics/astro";
+import SpeedInsights from "@vercel/speed-insights/astro";
 import { resolveDefaultOgImagePath } from "@/utils/resolveDefaultOgImagePath";
 import { getAssetPath } from "@/utils/withBase";
 import config from "@/config";
@@ -99,5 +101,7 @@ const rssHref = getRelativeLocaleUrl(Astro.currentLocale ?? config.site.lang, "r
     <script>
       import "@/scripts/theme";
     </script>
+    <Analytics />
+    <SpeedInsights />
   </body>
 </html>
