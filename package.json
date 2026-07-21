@@ -39,9 +39,9 @@
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.9",
-    "@astrojs/markdown-remark": "^7.2.0",
+    "@astrojs/markdown-remark": "^7.2.1",
     "@pagefind/default-ui": "^1.5.2",
-    "@shikijs/transformers": "^4.1.0",
+    "@shikijs/transformers": "^4.3.1",
     "@tailwindcss/typography": "^0.5.19",
     "@types/lodash.kebabcase": "^4.1.9",
     "@typescript-eslint/parser": "^8.60.0",
