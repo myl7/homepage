@@ -4,9 +4,10 @@ allowBuilds:
 
 overrides:
   '@astrojs/language-server': 2.16.11
-  brace-expansion: 5.0.8
+  brace-expansion: 5.0.9
   esbuild: 0.28.1
-  fast-uri: 3.1.4
-  js-yaml: 4.3.0
+  fast-uri: 3.1.5
+  js-yaml: 4.3.1
+  postcss: 8.5.26
   vite: 8.1.5
   yaml: 2.9.0
