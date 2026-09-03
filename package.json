@@ -17,7 +17,7 @@
     "to-xhs": "node scripts/md-to-xhs.js"
   },
   "dependencies": {
-    "@astrojs/mdx": "^6.0.1",
+    "@astrojs/mdx": "^7.0.8",
     "@astrojs/rss": "^4.0.19",
     "@astrojs/sitemap": "^3.7.3",
     "@tailwindcss/vite": "^4.3.0",
